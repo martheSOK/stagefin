@@ -5,7 +5,7 @@
             <button class="bg-green-700 p-2 rounded-lg text-white font-bold hover:bg-green-900"  id="b0" type="submit"><a href="{{ route('personnels.create') }}">Ajouter un personnel</a></button>
         </div>
         <hr class="h-1 mt-2 mb-3">
-        <h2 class="text-center text-white text-lg" >La liste des quantités d'emballage de chaque depot</h2>
+        <h2 class="text-center text-white text-lg p-10"  >La liste des personnels</h2>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>

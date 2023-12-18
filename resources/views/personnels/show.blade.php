@@ -1,43 +1,60 @@
+
 <x-app-layout>
-    <div class="mt-20" >
-            <div class="bg-gray-700 w-100 h-10 text-white "> <h1 class="text-center font-bold p-2 ">Affichage d'un personnel</h1></div>
-                <hr class="h-1 mt-2 mb-3">
-    
-            <div class="enf1">
-                <label for="nom">Nom</label>
-                <input type="text" name="nom" value="@php if (!empty($personnel)){echo $personnel->nom;} @endphp" disabled/><br>
-            </div>
-            <div class="enf2">
-                <label for="prenom">Prenom</label>
-                <input type="text" name="prenom" value="@php if (!empty($personnel)){echo $personnel->prenom;} @endphp" disabled/><br>
-            </div>
-            <div class="enf3">
-                <label>Sexe :</label>
-                <div class="form-check">
-                <input type="radio" class="form-check-input" id="homme" name="sexe" value="homme">
-                <label class="form-check-label" for="homme">Homme</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" id="femme" name="sexe" value="femme">
-                <label class="form-check-label" for="femme">Femme</label>
-            </div>
-            </div>
-            <div class="enf4">
+    <section class="text-gray-600 body-font"> 
+        <form >
+            <div class="container py-24 mx-auto flex flex-wrap items-center">
+            
+                <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col m-auto  ">
+                    <h2 class="text-gray-900 text-lg font-medium title-font mb-5 text-center">Affichage d'un personnel</h2>
+                    <div class="relative mb-4">
+                    <label for="full-name" class="leading-7 text-sm text-gray-600">Nom</label>
+                    <input type="text" id="full-name" name="nom" class="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"value="@php if (!empty($personnel)){echo $personnel->nom;} @endphp" disabled>
+                    </div>
+                    <div class="relative mb-4">
+                    <label for="email" class="leading-7 text-sm text-gray-600">Prenom</label>
+                    <input type="text" id="email" name="prenom" class="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"value="@php if (!empty($personnel)){echo $personnel->prenom;} @endphp" disabled>
+                    </div>
+                    <div class="relative mb-4">
+                        <label>Sexe :</label>
+                        <div class="flex items-center gap-8">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="homme" name="sexe" value="homme">
+                                <label class="form-check-label" for="homme">Homme</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="femme" name="sexe" value="femme">
+                                <label class="form-check-label" for="femme">Femme</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative mb-4">
+                        <label for="email" class="leading-7 text-sm text-gray-600">Contact</label>
                 <label for="contact">Contact</label>
-                <input type="text" name="contact" value="@php if (!empty($personnel)){echo $personnel->contact;} @endphp" disabled/><br>
+                <label for="contact">Contact</label>
+                <input type="number" id="email" name="contact" class="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" value="@php if (!empty($personnel)){echo $personnel->contact;} @endphp"disabled>
+                    </div>
+
+                    <div class="relative mb-4">
+                        <label for="email" class="leading-7 text-sm text-gray-600">Adresse</label>
+                        <input type="text" id="email" name="adresse" class="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" value="@php if (!empty($personnel)){echo $personnel->adresse;} @endphp"disabled>
+                    </div>
+
+                    <div class="relative mb-4">
+                        <label for="email" class="leading-7 text-sm text-gray-600">Dépôt</label>
+                        <select class="w-full" name="id_depot" value="@php if (!empty($personnel)){echo $personnel->id_depot;} @endphp" disabled>
+                            <option value="">selectionné</option>
+                            @foreach ($id_depot as $d)
+                                <option value="{{ $d->id_depot }}">{{ $d->designation }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" type="submit"><a href="{{route('personnels.index')}}">Quiter</a></button>
+                   
+                    
+                </div>
             </div>
-            <div class="enf5">
-                <label for="adresse">Adresse</label>
-                <input type="text" name="adresse" value="@php if (!empty($personnel)){echo $personnel->adresse;} @endphp" disabled/><br>
-            </div>
-            <div class="enf6"> 
-                <label for="id_depot">Depot</label>
-                <select name="id_depot" value="@php if (!empty($personnel)){echo $personnel->id_depot;} @endphp" disabled>
-                    @foreach ($id_depot as $d)
-                        <option value="{{ $d->id_depot }}">{{ $d->designation }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <button id="b1" type="submit"><a href="{{route('personnels.index')}}">Quiter</a></button>
-          
+        </form>
+    </section>
 </x-app-layout>
+
+
