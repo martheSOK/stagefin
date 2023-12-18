@@ -3,14 +3,17 @@
 <form action="{{route ('depots.update',$depot->id_depot) }}" method="POST">
     @csrf
     @method('PUT')
-    <div class="mt-20">
-        <div class="bg-gray-700 w-100 h-10 text-white "> <h1 class="text-center font-bold p-2 ">Modification d'un depot</h1></div>
-        <hr class="h-1 mt-2 mb-3">
-        <div class="enf1">
-            <label for="nom_depot">Nom_du_depot</label>
-            <input type="text" name="designation" value="@php if (!empty($depot)){echo $depot->designation;} @endphp"/><br>
+    <div class="container py-24 mx-auto flex flex-wrap items-center">
+            
+        <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col m-auto  ">
+            <h2 class="text-gray-900 text-lg font-medium title-font mb-5 text-center">Enregistrer un depot</h2>
+        
+            <div class="relative mb-4">
+            <label for="designation" class="leading-7 text-sm text-gray-600">Nom_du_depot</label>
+            <input type="text" id="designation" name="designation" class="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" value="@php if (!empty($depot)){echo $depot->designation;} @endphp">
+            </div>
+            <button class="text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg" type="submit">Enregistrer</button>
         </div>
-        <button id="b1" type="submit">Enregistrer</button>
     </div>  
 </form>
 
